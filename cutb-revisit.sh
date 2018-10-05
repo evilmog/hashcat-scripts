@@ -7,7 +7,7 @@ echo "[+] Sorting Potfile"
 cut -d: -f2- < $hcpath/hashcat.potfile | sort -u > $workpath/cand.lst
 for i in {1..8}; do
   for s in $( eval echo {0..$i} ); do
-    $hupath/cutb.bin 0 $i < $workpath/cand.lst | sort -u > $workpath/$i-first-seq.txt
+    $hupath/cutb.bin $s $i < $workpath/cand.lst | sort -u > $workpath/$i-first-seq.txt
   done
 done
 for i in {1..8}; do
