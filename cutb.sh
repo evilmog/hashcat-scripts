@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Example usage:
+# ./cutb.sh /path/to/wordlist.txt
+
 hu_path="/opt/utils/hashcat-utils/src"
 work_path="/opt/cutb"
 
