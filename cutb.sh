@@ -1,14 +1,17 @@
 #!/bin/bash
-pp_path="/opt/utils/princeprocessor/src"
+
+# Example usage:
+# ./cutb.sh /path/to/wordlist.txt
+
 hu_path="/opt/utils/hashcat-utils/src"
 work_path="/opt/cutb"
 
 for i in {1..8}; do
- $pp_path/cutb.bin 0 $i < $1 | sort -u > $workpath/$i-first.txt
+ $hu_path/cutb.bin 0 $i < $1 | sort -u > $work_path/$i-first.txt
 done
 
 for i in {1..8}; do
-  $pp_path/cutb.bin -$i < $1 | sort -u > $workpath/$i-last.txt
+  $hu_path/cutb.bin -$i < $1 | sort -u > $work_path/$i-last.txt
 done
 
-cat $workpath/*-first.txt $workpath/*-last.txt | sort -u > $workpath/cand.cutb
+cat $work_path/*-first.txt $work_path/*-last.txt | sort -u > $work_path/cand.cutb
