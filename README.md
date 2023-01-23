@@ -20,3 +20,10 @@ and then basically repeat
 13. also pipe in the usernames into the above process
 14. when using rules turn on debug mode and capture the rules
 15. use cewl and crunch to generate a wordlist, repeat the above
+
+# random snippits
+
+## A1 Grind
+```
+or i in $(seq 1 30); do ./hashcat.bin ../ntlm.hash -m 1000 --show  | cut -d: -f2- | /opt/utils/hashcat-utils/src/expander.bin | sort -u > cand.exp; ./hashcat.bin ../ntlm.hash -m 1000 -a 1 cand.exp cand.exp -O; done
+```
