@@ -1,6 +1,42 @@
 # hashcat-scripts
 Random Hashcat Scrips
 
+# Fingercut
+New script I added, combines dynamic expander and fingerprint attacks into one script
+
+This Bash script automates the process of expanding a wordlist using the `hashcat-utils` `expander.bin` utility, followed by cutting and processing the expanded wordlist. Below is an overview of its functionality:
+
+### Features
+
+1. **Input Validation**: 
+   - The script checks if a valid input wordlist file is provided.
+   - If the file does not exist or is missing, the script aborts with an error message.
+
+2. **Wordlist Expansion**: 
+   - The input wordlist is processed through `expander.bin`, generating variations for each word.
+   - The expanded words are stored and appended to the original wordlist.
+
+3. **Dynamic Length Calculation**: 
+   - The script determines the length of the longest line in the updated wordlist.
+   - The maximum length is capped at 16 characters to avoid overly large cuts.
+
+4. **Cut Operations**: 
+   - The wordlist is processed by cutting the first and last portions of each line, up to half the maximum line length.
+   - For odd-length lines, the middle character is processed separately.
+
+5. **Sorting and Uniqueness**: 
+   - After the cut operations, the results are sorted and made unique to ensure clean output.
+   - The final output is saved to a specified file.
+
+6. **Runtime Calculation**: 
+   - The script logs the start and end times of the operation.
+   - It provides a human-readable summary of the total runtime in hours, minutes, and seconds.
+
+### Usage Example
+
+```bash
+./fingercut.sh <input_wordlist>
+
 # evilmogs random ad methodology
 realistically I would go with the following approach:
 
@@ -35,3 +71,4 @@ for i in $(seq 1 50); do ./hashcat.bin ../ntlm.hash -m 1000 --show | cut -d: -f2
 
 ## Expander Rockyou generate
 expander.bin < rockyou.txt | sort -u > rockyou.exp; for i in $(seq 1 200); do shuf rockyou.exp | ./hashcat.bin -m 1000 -O -w3 ntds.dit -g 100000; done
+
