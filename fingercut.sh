@@ -12,11 +12,6 @@ if [ -z "$input_file" ]; then
   exit 1
 fi
 
-if [ ! -f "$input_file" ]; then
-  echo "Error: Input wordlist '$input_file' does not exist."
-  exit 1
-fi
-
 # Ensure work_path exists
 mkdir -p "$work_path"
 
