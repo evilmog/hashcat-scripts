@@ -36,6 +36,7 @@ This Bash script automates the process of expanding a wordlist using the `hashca
 
 ```bash
 ./fingercut.sh <input_wordlist>
+```
 
 # evilmogs random ad methodology
 realistically I would go with the following approach:
